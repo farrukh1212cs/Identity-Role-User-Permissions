@@ -1,0 +1,151 @@
+﻿@model Insurance.Models.SMTPSettings
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    var title = "Update SMTP Configuration";
+}
+
+<div class="modal fade" id="smtpconfig">
+    <div class="modal-dialog modal-xl">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  @title </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form action="/Admin/SMTPConfigure/Upsert" id="PVForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row">
+
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Host"></label>
+                                <input asp-for="Host" class="form-control required" />
+                                <span asp-validation-for="Host" id="span_BRRLetterofGuarantee_LGNo" class="text-danger"></span>
+                            
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="SenderDisplayName"></label>
+                                <input asp-for="SenderDisplayName" class="form-control required" />
+                                <span asp-validation-for="SenderDisplayName" id="span_BRRLetterofGuarantee_NameOfBeneficiary" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="SenderAddress"></label>
+                                <input asp-for="SenderAddress" class="form-control required" />
+                                <span asp-validation-for="SenderAddress" id="span_BRRLetterofGuarantee_DateofExpiry" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+
+                                <label asp-for="Port"></label>
+                                <input asp-for="Port" class="form-control required" />
+                                <span asp-validation-for="Port" id="span_BRRLetterofGuarantee_DateofIssuance" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row">
+
+
+
+                        <div class="col-4">
+                            <div class="form-group">
+
+                               
+                                <label asp-for="IsBodyHTML"></label>
+                                <input asp-for="IsBodyHTML" class="form-control required" />
+                                <span asp-validation-for="IsBodyHTML" id="span_BRRLetterofGuarantee_LGAmount" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+
+                               
+                                <label asp-for="EnableSSL"></label>
+                                <input asp-for="EnableSSL" class="form-control" readonly />
+                                <span asp-validation-for="EnableSSL" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+
+                                <label asp-for="UseDefaultCredentials"></label>
+                                <input asp-for="UseDefaultCredentials" class="form-control required" />
+                                <span asp-validation-for="UseDefaultCredentials" id="span_BRRLetterofGuarantee_RegularExpired" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+
+
+
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

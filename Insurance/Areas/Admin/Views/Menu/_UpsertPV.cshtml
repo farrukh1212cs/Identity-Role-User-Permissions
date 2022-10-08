@@ -1,0 +1,115 @@
+﻿@model Insurance.Models.Menu
+
+@{
+    var title = "Create Menu";
+}
+@if (Model.Id != 0)
+{
+ title = "Edit Menu";
+}
+<div class="modal fade" id="addMenu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  @title </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+       
+            <div class="modal-body">
+                <form action="Upsert" id="PVForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="@Model.Id" />
+                    <div class="form-group">
+
+                        <label asp-for="MenuName"></label>
+
+                        <input asp-for="MenuName" class="form-control" />
+                        <span asp-validation-for="MenuName" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AreaName"></label>
+                        <input asp-for="AreaName" class="form-control" />
+                        <span asp-validation-for="AreaName" class="text-danger"></span>
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label asp-for="MenuOrder"></label>
+                        <input asp-for="MenuOrder" class="form-control" />
+                        <span asp-validation-for="MenuOrder" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="MenuIcon"></label>
+
+                        <input asp-for="MenuIcon" class="form-control" />
+                        <span asp-validation-for="MenuIcon" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                             <label asp-for="IsActive"></label>
+                             <input type="checkbox" asp-for="IsActive" class="form-control" />
+                             <span asp-validation-for="IsActive" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6"> 
+                                <label asp-for="IsSingle"></label>
+                                <input type="checkbox" asp-for="IsSingle" class="form-control" />
+                                <span asp-validation-for="IsSingle" class="text-danger"></span>
+                            </div>
+                        
+                        
+                       
+
+                        </div>
+                       
+
+                    </div>
+                    <div class="form-group">
+                          <label asp-for="ControllerName"></label>
+                             <input  asp-for="ControllerName" class="form-control" />
+                             <span asp-validation-for="ControllerName" class="text-danger"></span>
+                    </div> 
+                    <div class="form-group">
+                          <label asp-for="ActionName"></label>
+                             <input  asp-for="ActionName" class="form-control" />
+                             <span asp-validation-for="ActionName" class="text-danger"></span>
+                    </div>  
+                    <div class="form-group">
+                          <label asp-for="MenuURL"></label>
+                             <input  asp-for="MenuURL" class="form-control" />
+                             <span asp-validation-for="MenuURL" class="text-danger"></span>
+                    </div>
+
+                </form>
+            </div>
+       
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+}

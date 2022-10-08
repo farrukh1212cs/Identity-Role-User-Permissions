@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/public/css/style.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/fontawesome.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="~/public/css/jqueryui.css">
+    <link rel="stylesheet" href="~/public/css/tooltip.css">
+    <link rel="stylesheet" href="~/css/ext/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/ext/toastr.min.css" />
+    
+      <link rel="stylesheet" href="~/public/dp/sumoselect.min.css"/>
+
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <label for="nav-toggle">
+                <h2><i class="fa fa-bars"></i></h2>
+            </label>
+
+        </div>
+        <div class="sidebar-menu">
+
+            
+                    @(await Component.InvokeAsync("SingleMenu"))
+           @* <ul>
+                <li><a href="/Schedulers/Dashboard/Index" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                <li><a href="/Schedulers/Schedule/Index"><i class="far fa-calendar-check"></i><span>Scheduling</span></a></li>
+              
+            </ul>*@
+        </div>
+    </div>
+    <div class="main-content">
+
+        @RenderBody()
+
+
+    </div>
+     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js'></script>
+
+
+
+    <script src="~/js/ext/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/js/ext/toastr.min.js"></script>
+
+    <script src="~/js/ext/jquery-ui.min.js"></script>
+    <script src="~/js/ext/jquery.dataTables.min.js"></script>
+    @RenderSection("Scripts", required: false)
+     <script src="~/public/dp/jquery.sumoselect.min.js"></script>
+       <script type="text/javascript">
+          $(document).ready(function () {
+              $('.Sseeclect').SumoSelect();
+          });
+      </script>
+</body>
+</html>

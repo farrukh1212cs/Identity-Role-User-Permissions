@@ -1,0 +1,131 @@
+﻿@model Insurance.Models.ViewModels.SubMenuVM
+
+@{
+    var title = "Create SubMenu";
+}
+
+
+
+
+<div class="modal fade" id="addSubMenu">
+    <div class="modal-dialog modal-xl">
+        @if (Model.Menu.Id != 0)
+        {
+            title = "Edit SubMenu";
+
+        }
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  @title </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form action="SubMenuUpsert" id="PVForm">
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-4">
+
+                            <input type="hidden" asp-for="Menu.Id" />
+                            <div class="form-group">
+                                <label asp-for="Menu.MenuUnder"></label>
+                                @Html.DropDownListFor(m => m.Menu.MenuUnder, Model.MenuList, "-Select a Parrent",
+                               new { @class = "form-control" })
+                                <span asp-validation-for="Menu.MenuUnder" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.MenuName"></label>
+                                <input asp-for="Menu.MenuName" class="form-control" />
+                                <span asp-validation-for="Menu.MenuName" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.AreaName"></label>
+                                <input asp-for="Menu.AreaName" class="form-control" />
+                                <span asp-validation-for="Menu.AreaName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.ControllerName"></label>
+                                <input asp-for="Menu.ControllerName" class="form-control" />
+                                <span asp-validation-for="Menu.ControllerName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.ActionName"></label>
+                                <input asp-for="Menu.ActionName" class="form-control" />
+                                <span asp-validation-for="Menu.ActionName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.MenuURL"></label>
+                                <input asp-for="Menu.MenuURL" class="form-control" />
+                                <span asp-validation-for="Menu.MenuURL" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.MenuOrder"></label>
+                                <input asp-for="Menu.MenuOrder" class="form-control" />
+                                <span asp-validation-for="Menu.MenuOrder" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.MenuIcon"></label>
+                                <input asp-for="Menu.MenuIcon" class="form-control" />
+                                <span asp-validation-for="Menu.MenuIcon" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Menu.IsActive"></label>
+                                <input type="checkbox" asp-for="Menu.IsActive" class="form-control" />
+                                <span asp-validation-for="Menu.IsActive" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+
+
+
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,96 @@
+﻿@using Insurance.Utility
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/public/css/style.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/fontawesome.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="~/public/css/jqueryui.css">
+    <link rel="stylesheet" href="~/public/css/tooltip.css">
+    <link rel="stylesheet" href="~/css/ext/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/ext/toastr.min.css" />
+    <link rel="stylesheet" href="~/public/dp/sumoselect.min.css" />
+
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <label for="nav-toggle">
+                <h2><i class="fa fa-bars"></i></h2>
+            </label>
+
+        </div>
+        <div class="sidebar-menu">
+            @(await Component.InvokeAsync("SingleMenu"))
+            @*
+                <ul>
+                    <li><a href="/TeamLead/Dashboard/Index" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                    <li><a href="/TeamLead/PostCodeRequest/Index"><i class="fas fa-map-marked"></i><span>Postal Code Requests</span></a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i><span>My Claims</span></a></li>
+                    <li><a href="#"><i class="far fa-calendar-check"></i><span>Scheduling</span></a></li>
+                    <li><a href="#"><i class="fas fa-users"></i><span>My Team</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i><span>Reports</span></a></li>
+                    <li><a href="#"><i class="far fa-calendar-alt"></i><span>Calender</span></a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i><span>Inbox</span></a></li>
+                    <li><a href="#"><i class="fas fa-id-card"></i><span>Contacts</span></a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i><span>Settings</span></a></li>
+                </ul>*@
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+
+        <header>
+            <h2>
+                <label for="">
+                    <i class="fas fa-user"></i>
+                </label>
+
+                @vari.HeaderName
+
+            </h2>
+
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="search" placeholder="Search here" />
+            </div>
+            <div class="user-wrapper">
+                <div>
+                    <h4>
+                        @(await Component.InvokeAsync("UserName"))
+
+
+                    </h4>
+                    <partial name="_AccountSetting" />
+                </div>
+                <img src="~/public/img/Student.png" alt="" width="40px" height="40px" />
+            </div>
+        </header>
+
+
+        @RenderBody()
+
+
+    </div>
+    <script type="text/javascript" src="~/public/js/jquery.min.js"></script>
+
+    <script src="~/js/ext/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/js/ext/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/ext/jquery-ui.min.js"></script>
+    <script src="~/js/ext/jquery.dataTables.min.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript" src="~/public/js/jquery-input-mask-phone-number.js"></script>
+    <script src="~/public/dp/jquery.sumoselect.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.Sseeclect').SumoSelect();
+        });
+    </script>
+</body>
+</html>

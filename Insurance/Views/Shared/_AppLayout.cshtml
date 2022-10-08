@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/public/css/style.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/fontawesome.css">
+    <link rel="stylesheet" href="~/public/libs/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="~/public/css/jqueryui.css">
+    <link rel="stylesheet" href="~/public/css/tooltip.css">
+
+      <link rel="stylesheet" href="~/public/dp/sumoselect.min.css"/>
+
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <label for="nav-toggle">
+            <h2><i class="fa fa-bars"></i></h2>
+            </label>
+
+        </div>
+        <div class="sidebar-menu">        
+                 @(await Component.InvokeAsync("SingleMenu"))
+        </div>
+    </div>
+    <div class="main-content">
+
+        @RenderBody()
+
+
+    </div>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js'></script>
+
+   
+
+<link rel="stylesheet" type="text/css" href="~/public/datatable/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="~/public/datatable/js/jquery.dataTables.js"></script>
+ 
+  @*  <script type="text/javascript" src="~/public/js/jquery.min.js"></script>
+*@
+    @*<script src="~/js/ext/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/js/ext/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/ext/jquery-ui.min.js"></script>
+    <script src="~/js/ext/jquery.dataTables.min.js"></script>*@
+        @RenderSection("Scripts", required: false)
+         <script src="~/public/dp/jquery.sumoselect.min.js"></script>
+       <script type="text/javascript">
+          $(document).ready(function () {
+              $('.Sseeclect').SumoSelect();
+          });
+      </script>
+
+       
+
+
+
+</body>
+
+
+</html>

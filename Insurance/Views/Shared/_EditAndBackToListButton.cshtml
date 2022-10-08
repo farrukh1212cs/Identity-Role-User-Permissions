@@ -1,0 +1,17 @@
+﻿@model int
+<div class="row">
+    <div class="col">
+        <button type="submit" class="btn btn-primary form-control" asp-route-id="@Model">Update</button>
+    </div>
+    <div class="col">
+
+        @if(@Model != null)
+        {
+         <a asp-action="Index" class="btn btn-success form-control" form-control" asp-route-id="@Model">Back to List</a>
+        }else
+        {
+        <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+    //Layout = null;
+}
+
+<div class="modal fade" id="EditRolePer">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  Permissions : @ViewBag.Role.Name </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="EditRolePermission" id="PVForm">
+
+                    @*------------------------------*@
+                    <div id="jstree">
+                    </div>
+
+                    <input type="hidden" name="selectedItems" id="selectedItems" />
+                    <input type="hidden" name="roleID" id="roleID" value="@ViewBag.Role.Id" />
+         
+
+                    <link rel="stylesheet" href="~/css/jstree/style.min.css" />
+                    <script type="text/javascript" src="~/js/jstree/jstree.min.js"></script>
+
+                    <script type="text/javascript">
+             $(function () {
+                 $('#jstree').on('changed.jstree', function (e, data) {
+                     var i, j;
+                     var selectedItems = [];
+                     for (i = 0, j = data.selected.length; i < j; i++) {
+                         //Fetch the Id.
+                         var id = data.selected[i];
+                         var parent;
+                         var nodeId;
+
+                         //Remove the ParentId.
+                         if (id.indexOf('-') != -1) {
+                             nodeId = id.split("-")[1];
+                             parent = id.split("-")[0];
+                         } else {
+                             nodeId = id;
+                             parent = "#";
+                         }
+
+                         //Add the Node to the JSON Array.
+                         selectedItems.push({
+                             text: data.instance.get_node(data.selected[i]).text,
+                             id: nodeId,
+                             parent: parent
+                         });
+                     }
+
+                     //Serialize the JSON Array and save in HiddenField.
+                     $('#selectedItems').val(JSON.stringify(selectedItems));
+                 }).jstree({
+                     "checkbox": { "keep_selected_style": false },
+                     "plugins": ["wholerow", "checkbox"],
+                     "core": {
+                         "themes": { "variant": "large" },
+                         "data": @Html.Raw(ViewBag.Json)
+                        }
+                 }).bind("loaded.jstree", function (event, data) {
+                    $(this).jstree("open_all");
+
+                });
+                });
+
+                    </script>
+
+
+                    @*--------------------------*@
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

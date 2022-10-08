@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Insurance.Models.Menu> 
+<ul>
+      @foreach (var item in Model.OrderBy(x=>x.MenuOrder))
+        {
+         <li><a href="@item.MenuURL" class="active"><i class="@item.MenuIcon"></i><span>@item.MenuName</span></a></li>
+               
+           
+        }
+
+                
+ 
+
+
+
+</ul>

@@ -1,0 +1,144 @@
+﻿@*//User Modal*@
+@model Insurance.Models.ViewModels.UserVM
+
+@{
+    var title = "Create User";
+}
+@if (Model.User.Id != null)
+{
+    title = "Edit User";
+}
+
+
+<div class="modal fade" id="addUser">
+    <div class="modal-dialog modal-xl">
+      
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  @title </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form action="Upsert" id="PVForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="User.Id" />
+                    <div class="row">
+
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.Name"></label>
+                                <input asp-for="User.Name" class="form-control" />
+                                <span asp-validation-for="User.Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.Email"></label>
+                                <input asp-for="User.Email" class="form-control" />
+                                <span asp-validation-for="User.Email" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.PhoneNumber"></label>
+                                <input asp-for="User.PhoneNumber" class="form-control" />
+                                <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
+                            </div>                         
+                           
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.StreetAddress"></label>
+                                <input asp-for="User.StreetAddress" class="form-control" />
+                                <span asp-validation-for="User.StreetAddress" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.City"></label>
+                                <input asp-for="User.City" class="form-control" />
+                                <span asp-validation-for="User.City" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="User.State"></label>
+                                <input asp-for="User.State" class="form-control" />
+                                <span asp-validation-for="User.State" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+
+                                <label asp-for="User.Is_Active"></label>
+                                <input type="checkbox" asp-for="User.Is_Active" class="form-control" />
+                                <span asp-validation-for="User.Is_Active" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+
+                                <label asp-for="User.Role"></label>
+                                @Html.DropDownListFor(m => m.User.Role, Model.RoleList, "-Select a Role",
+                               new { @class = "form-control" })
+                                <span asp-validation-for="User.Role" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+
+                                <label> Manager</label>
+                                @Html.DropDownListFor(m => m.UserTeamID, Model.TeamsList, "-Select a Team",
+                               new { @class = "form-control" })
+                                <span asp-validation-for="UserTeamID" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                     
+
+                    </div>
+
+</form>
+            </div>
+
+            <div class="modal-footer">
+
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+
+
+
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

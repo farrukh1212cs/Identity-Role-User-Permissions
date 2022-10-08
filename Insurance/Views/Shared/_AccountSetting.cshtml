@@ -1,0 +1,22 @@
+﻿@using Insurance.Utility
+            @if(User.IsInRole(SD.Role_Client) || User.IsInRole(SD.Role_Enterprise))
+            {
+                
+                <small><a href="/Client/CLAccount">View Account</a></small>
+            }else if(User.IsInRole(SD.Role_Inspector))
+            {
+                 <small><a href="/Inspector/Useraccount/Index">View Account</a></small>
+            }else if(User.IsInRole(SD.Role_Schedulers))
+            {
+                 <small><a href="/Schedulers/SAccount/Index">View Account</a></small>
+            }else if(User.IsInRole(SD.Role_Client))
+            {
+                 <small><a href="/Client/CLAccount">View Account</a></small>
+            }else if(User.IsInRole(SD.Role_Team_Leader) || User.IsInRole(SD.Role_Managers))
+            {
+                 <small><a href="/TeamLead/TLAccount">View Account</a></small>
+            }          
+            else
+            {
+                <small><a href="/Schedulers/SAccount/Index">View Account</a></small>
+            }
