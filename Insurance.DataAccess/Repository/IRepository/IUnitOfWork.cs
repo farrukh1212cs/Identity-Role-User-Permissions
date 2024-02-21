@@ -6,10 +6,6 @@ namespace Insurance.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
-
-
-    
-  
         IApplicationUserRepository ApplicationUser { get; }
         ISP_Call SP_Call { get; }
        
@@ -26,9 +22,9 @@ namespace Insurance.DataAccess.Repository.IRepository
       
       
         IExceptionsLogsRepository ExceptionsLogs { get; }
-     
-      
-      
+
+
+        IStudentRepositoryAsync Student { get; }
 
         void Save(string UserID);
         void SaveWH();

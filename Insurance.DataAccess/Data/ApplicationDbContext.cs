@@ -32,7 +32,7 @@ namespace Insurance.DataAccess.Data
 
         //---------------------------------------------------------------
 
-
+       public DbSet<Student> Student { get; set; }
       
 
         //----------------------Insurance App----------------------------

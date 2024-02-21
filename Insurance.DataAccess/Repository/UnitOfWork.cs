@@ -30,9 +30,7 @@ namespace Insurance.DataAccess.Repository
             UserTeam = new UserTeamRepository(_db);
           
             ExceptionsLogs = new ExceptionsLogsRepository(_db);
-
-          
-
+            Student = new StudentRepositoryAsync(_db);
         }
 
       
@@ -42,7 +40,7 @@ namespace Insurance.DataAccess.Repository
         public ISP_Call SP_Call { get; private set; }
 
       
-
+        public IStudentRepositoryAsync Student { get; private set; }
         public IMenuRepository Menu { get; set; }
     
         public IAactionRepository Aaction { get; set; }
