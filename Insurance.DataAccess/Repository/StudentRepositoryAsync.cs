@@ -24,6 +24,7 @@ namespace Insurance.DataAccess.Repository
             {   
                 objFromDb.Name = obj.Name;
                 objFromDb.RollNo = obj.RollNo;
+                objFromDb.FatherName = obj.FatherName;
 
             }
         }

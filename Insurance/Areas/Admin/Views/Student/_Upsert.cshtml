@@ -1,0 +1,89 @@
+﻿@model Insurance.Models.Student
+
+
+@{
+    var title = "Create Student";
+}
+
+<div class="modal fade" id="addStudent">
+
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMenuLable">  @title </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="PVForm" method="post" action="Upsert">
+
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row">
+
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="Name"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="FatherName"></label>
+                                <input asp-for="FatherName" class="form-control" />
+                                <span asp-validation-for="FatherName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="RollNo"></label>
+                                <input asp-for="RollNo" class="form-control" />
+                                <span asp-validation-for="RollNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <hr />
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+
+
+
+                <button type="submit" class="btn btn-success form-control" data-save="modal">Save</button>
+
+
+                <button type="submit" class="btn btn-primary form-control" data-dismiss="modal">Close</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

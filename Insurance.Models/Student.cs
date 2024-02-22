@@ -17,6 +17,11 @@ namespace Insurance.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
+        [Display(Name = "Father Name")]
+
+        [MaxLength(50)]
+        public string FatherName { get; set; }
+
 
         [Display(Name = "Roll No")]
   
